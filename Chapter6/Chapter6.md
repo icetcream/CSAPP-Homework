@@ -189,6 +189,48 @@ C: 25%
 
 100%
 
+## 6.45
+
+```C
+void transpose(int *dst, int *src, int dim){
+    int i, j;
+    for(i=0; i<dim; i+=B){
+        for(j=0; j<dim; j+=B){
+            for(int k=i; k<i+B; k++){
+                for(int q=j; q<j+B; q++){
+                    if(k < dim && q < dim){
+                        dst[k*dim + q] = src[q*dim + k];
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+```
+
+## 6.46
+
+```C
+void col_convert(int *G,int dim){
+    int i,j;
+    for(i=0; i<dim; i+=B){
+        for(j=i; j<dim; j+=B){
+            for(int k=i; k<i+B; k++){
+                for(int q=j; q<j+B; q++){
+                    if(k < dim && q < dim){
+                        G[q*dim+k] = G[q*dim+k]||G[k*dim+q];
+                        G[k*dim+q] = G[k*dim+q]||G[q*dim+k];
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
 
 
 

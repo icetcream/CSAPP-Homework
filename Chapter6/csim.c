@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     char *t_param = NULL; // 用于存储 -t 参数
     int v_flag = -1; // 详细模式
 
-    // 定义选项字符串，`s:` 和 `b:` 表示需要参数，`E` 表示不需要参数
+
     while ((opt = getopt(argc, argv, "s:b:E:t:v")) != -1) {
         switch (opt) {
             case 's':
